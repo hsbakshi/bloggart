@@ -1,0 +1,28 @@
+<div style="height:60px;width:960px;overflow:hidden;">
+    <form name="search" target="_top" action="/twitglee/search" >
+        <span style="width:500px">
+        <a href="/twitglee" target="_top"  style="text-decoration:none;">
+         <img src="/static/twitglee/logo.png" style="width:250px; vertical-align:middle; border:0px;" />
+        </a>
+
+        <input type="text" name="q" value="{{ q|escape }}" style="padding:5px; border:5px solid #ddd; width:200px" />
+        &nbsp;&nbsp;
+        <input type="submit" name="submit" value="TwitGlee it!" />&nbsp;&nbsp;&nbsp;
+        
+        <a href="http://twitter.com/share" class="twitter-share-button"
+         data-text="Search Google and Twitter Together!!" data-count="none" data-via="hsbakshi">
+         Tweet
+        </a>
+        </span>
+        <span style="width:200px;">
+        </span>
+        <span>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.hrishibakshi.com%2Ftwitglee&amp;layout=button_count&amp;show_faces=true&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe> 
+        
+        </span>
+        <!--<a href="" onclick="">Just Google</a><a href="" onclick="">Just Twitter</a>-->
+
+    </form>
+</div>

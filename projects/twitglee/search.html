@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+    <title>Twitter and Google Together!</title>
+    <link REL="SHORTCUT ICON" HREF="/static/twitglee/tg.png">
+</HEAD>
+<frameset rows="70px,100%">
+
+<frame src="/twitglee/top?q={{ q|escape }}">
+
+
+<frameset cols="50%,50%">
+  {% if q %}
+  <frame id="google" src="http://www.google.com/search?q={{ q|escape }}" />
+  <frame id="twitter" src="http://search.twitter.com/search?q={{ q|escape }}" />
+  {% else %}
+  <frame id="google" src="http://www.google.com/" />
+  <frame id="twitter" src="http://search.twitter.com/" />
+  {% endif %}
+
+
+  
+</frameset>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5769389-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
