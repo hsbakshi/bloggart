@@ -1,7 +1,9 @@
-application: bloggart-demo
-version: live
+application: hrishihome
+version: 4
 runtime: python
 api_version: 1
+
+default_expiration: "2d 0h 0m"
 
 skip_files: |
  ^(.*/)?(
@@ -24,6 +26,9 @@ handlers:
   script: deferred.py
   login: admin
 
+- url: /twitglee.*
+  script: projects/twitglee/twitglee.py
+
 - url: /admin/.*
   script: admin.py
   login: admin
@@ -31,6 +36,23 @@ handlers:
 - url: /static/([^/]+)/(.*)
   static_files: themes/\1/static/\2
   upload: themes/[^/]+/static/.*
+
+- url: /projects/([^/]+)/(.*)
+  static_files: projects/\1/static/\2
+  upload: projects/[^/]+/static/.*
+
+- url: /favicon.ico
+  static_files: themes/default/static/favicon.ico
+  upload: themes/default/static/favicon.ico
+
+- url: /cablemap
+  static_files: projects/cablemap/index.html
+  upload: projects/cablemap/index.html
+
+- url: /cablemap/
+  static_files: projects/cablemap/index.html
+  upload: projects/cablemap/index.html
+  
 
 - url: /.*
   script: static.py

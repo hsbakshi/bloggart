@@ -15,12 +15,15 @@ BASE_DIR = os.path.dirname(__file__)
 
 if isinstance(config.theme, (list, tuple)):
   TEMPLATE_DIRS = config.theme
+  TEMPLATE_DIRS.insert(1,
+                     os.path.abspath(os.path.join(BASE_DIR, 'projects')))
 else:
   TEMPLATE_DIRS = [os.path.abspath(os.path.join(BASE_DIR, 'themes/default'))]
+  TEMPLATE_DIRS.insert(1,
+                     os.path.abspath(os.path.join(BASE_DIR, 'projects')))
   if config.theme and config.theme != 'default':
     TEMPLATE_DIRS.insert(0,
                          os.path.abspath(os.path.join(BASE_DIR, 'themes', config.theme)))
-
 
 def slugify(s):
   s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore')
@@ -28,6 +31,8 @@ def slugify(s):
 
 
 def format_post_path(post, num):
+  if post.page:
+    return '/' + str(post.title) + '/'
   slug = slugify(post.title)
   if num > 0:
     slug += "-" + str(num)

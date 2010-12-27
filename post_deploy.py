@@ -1,7 +1,7 @@
 import datetime
 import logging
 import os
-from google.appengine.api.labs import taskqueue
+from google.appengine.api import taskqueue
 from google.appengine.ext import deferred
 
 import config
@@ -52,12 +52,15 @@ post_deploy_tasks.append(generate_static_pages([
 
 def regenerate_all(previous_version):
   if previous_version:
-    ver_tuple = (
-      previous_version.bloggart_major,
-      previous_version.bloggart_minor,
-      previous_version.bloggart_rev,
-    )
-  if ver_tuple < BLOGGART_VERSION:
+    try:
+      ver_tuple = (
+        previous_version.bloggart_major,
+        previous_version.bloggart_minor,
+        previous_version.bloggart_rev,
+      )
+    except AttributeError:
+      ver_tuple = previous_version
+  if not previous_version or ver_tuple < BLOGGART_VERSION:
     regen = PostRegenerator()
     deferred.defer(regen.regenerate)
 
@@ -72,6 +75,14 @@ def site_verification(previous_version):
 if config.google_site_verification:
   post_deploy_tasks.append(site_verification)
 
+def projects(previous_version):
+  for project in config.projects:
+    static.set('/'+project+'/',
+             utils.render_template('site_verification.html'),
+             config.html_mime_type, True)
+
+if config.projects: 
+  post_deploy_tasks.append(projects)
 
 def run_deploy_task():
   """Attempts to run the per-version deploy task."""
