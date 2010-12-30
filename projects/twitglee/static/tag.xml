@@ -15,7 +15,7 @@
 <Url type="application/x-suggestions+json" method="GET" template="http://suggestqueries.google.com/complete/search?output=firefox&amp;client=firefox&amp;hl={moz:locale}&amp;q={searchTerms}"/>
 <Url type="application/opensearchdescription+xml"
      rel="self"
-     template="http://www.hrishibakshi.com/static/twitglee/tag.xml" />
+     template="http://www.hrishibakshi.com/projects/twitglee/tag.xml" />
 
 <moz:SearchForm>http://www.hrishibakshi.com/twitglee/search</moz:SearchForm>
 </OpenSearchDescription>
