@@ -34,6 +34,13 @@ class SearchHandler(webapp.RequestHandler):
         self.response.out.write(utils.render_template(template_name, 
                                                         template_vals))
 
+class TwitSearchHandler(webapp.RequestHandler):
+    def get(self):
+        template_name = os.path.join("twitglee", "twitsearch.html")
+        q = self.request.get("q")
+        template_vals = { 'q': q,}
+        self.response.out.write(utils.render_template(template_name, 
+                                                        template_vals))
 class ToppartHandler(webapp.RequestHandler):
     def get(self):
         template_name = os.path.join("twitglee", "top.html")
@@ -44,6 +51,7 @@ class ToppartHandler(webapp.RequestHandler):
 def main():
   application = webapp.WSGIApplication(
     [
+    ('/twitglee/twitsearch$', TwitSearchHandler),
     ('/twitglee/search$', SearchHandler),
     ('/twitglee/top$', ToppartHandler),
     ('/twitglee.*', FrontpageHandler),

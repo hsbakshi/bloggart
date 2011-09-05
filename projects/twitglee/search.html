@@ -5,20 +5,17 @@
 </HEAD>
 <frameset rows="70px,100%">
 
-<frame src="/twitglee/top?q={{ q|escape }}">
-
+<frame src="/twitglee/top?q={{ q|escape }}">-->
 
 <frameset cols="50%,50%">
   {% if q %}
   <frame id="google" src="http://www.google.com/search?q={{ q|escape }}" />
-  <frame id="twitter" src="http://search.twitter.com/search?q={{ q|escape }}" />
+  <frame id="twitter" src="twitsearch?q={{ q|escape }}"   />
   {% else %}
   <frame id="google" src="http://www.google.com/" />
-  <frame id="twitter" src="http://search.twitter.com/" />
+  <frame id="twitter" src="http://twitter.com/" />
   {% endif %}
 
-
-  
 </frameset>
 
 <script type="text/javascript">

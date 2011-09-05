@@ -1,0 +1,16 @@
+<HTML>
+<HEAD>
+
+<script type="text/javascript" src="/static/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="/projects/twitglee/twitStream.js"></script>
+<script type="text/javascript">
+showTweetLinks='all';
+</script>
+<link rel="stylesheet" href="/projects/twitglee/twit-stream.css" />
+</HEAD>
+
+<body>
+Results For "{{ q|escape }}" :
+<div class="twitStream 30" id="tweets" title="{{ q|escape }}" ></div>
+</body>
+</html>
