@@ -28,10 +28,10 @@ function fetch_tweets(elem){
 	var url="http://search.twitter.com/search.json?q="+keyword+"&rpp="+num+"&callback=?";
 	$.getJSON(url,function(json){
         if (json.results.length < parseInt(num)) {
-            elem.append ("<div id='resultscount'>"+
+            elem.append ("<div class='resultscount'>"+
                          json.results.length+" results found.</div>");
         } else {
-            elem.append ("<div id='resultscount'>Showing "+num+
+            elem.append ("<div class='resultscount'>Showing "+num+
             " results. </div>");
         }
 		$(json.results).each(function(){
